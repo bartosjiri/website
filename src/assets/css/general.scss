@@ -1,0 +1,26 @@
+/* General */
+:root {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: sans-serif;
+	font-weight: normal;
+	font-size: 1.6rem;
+	line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #101010;
+	color: #212121;
+	height: 100%;
+	overflow: hidden;
+}
+
+::selection {
+	background-color: #101010;
+	color: #212121;
+}
+
+a, a:focus, a:visited {
+	outline: none;
+}
