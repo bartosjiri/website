@@ -41,8 +41,8 @@ if (window.DeviceOrientationEvent && "ontouchstart" in window) {
     cY = (2 * e.pageY - vY) / vY;
 
     const matrix = [
-      [1, 0, 0, cX * 0.0004],
-      [0, 1, 0, cY * 0.0004],
+      [1, 0, 0, cX * 0.00035],
+      [0, 1, 0, cY * 0.00035],
       [0, 0, 1, 1],
       [0, 0, 0, 1]
     ];
