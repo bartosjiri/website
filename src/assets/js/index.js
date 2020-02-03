@@ -22,8 +22,8 @@ if (window.DeviceOrientationEvent && "ontouchstart" in window) {
     dY = limitValue(e.beta, -60, 60) / 180;
 
     const matrix = [
-      [1, 0, 0, -dX * 0.004],
-      [0, 1, 0, -dY * 0.004],
+      [1, 0, 0, -dX * 0.0035],
+      [0, 1, 0, -dY * 0.0035],
       [0, 0, 1, 1],
       [0, 0, 0, 1]
     ];
