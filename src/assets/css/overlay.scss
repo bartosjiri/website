@@ -34,4 +34,18 @@
       transform: translate(50%,50%) scale(0.5) translate(-50%,-50%);
     }
   }
+
+  &:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAEUlEQVQImWNgQAcCAgL/MQQBFdUBMMkIRykAAAAASUVORK5CYII=);
+    z-index: 2;
+    background-size: 100% 3px;
+    pointer-events: none;
+  }
 }

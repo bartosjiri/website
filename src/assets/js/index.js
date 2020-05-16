@@ -32,7 +32,7 @@ if (window.DeviceOrientationEvent && "ontouchstart" in window) {
     overlay.style.webkitTransform = `matrix3d(${matrix.toString()})`;
   };
 
-  window.addEventListener("deviceorientation", handleDeviceEvent, false);  
+  window.addEventListener("deviceorientation", handleDeviceEvent, false);
 } else {
   const handleMouseEvent = (e) => {
     vX = document.documentElement.clientWidth;
