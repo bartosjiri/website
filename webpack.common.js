@@ -8,7 +8,8 @@ module.exports = {
       template: "./src/index.html"
     }),
     new CopyPlugin([
-      {from: "./src/img/meta", to: "./img/meta"}
+      {from: "./src/img/meta", to: "./img/meta"},
+      {from: "./static", to: "./"}
     ])
   ],
   module: {
