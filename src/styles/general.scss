@@ -1,0 +1,29 @@
+:root {
+	font-size: 62.5%;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	font-family: var(--font-family-01);
+	font-size: var(--font-size-01);
+	font-weight: var(--typography-weight-01);
+	line-height: 1.5;
+	color: var(--color-foreground-01);
+	background-color: var(--color-background-01);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	-webkit-tap-highlight-color: transparent;
+
+	a {
+		outline: 0;
+		text-decoration: none;
+	}
+
+	// ::selection {
+	// 	background-color: transparent;
+	// }
+}
