@@ -1,8 +1,9 @@
 export const META_DOMAIN = 'https://about.bartosjiri.com';
 
 export const META_TITLE = `About — bartosjiri`;
-export const META_DESCRIPTION = '@TODO';
-export const META_KEYWORDS = ['bartosjiri', '@TODO'];
+export const META_DESCRIPTION =
+	'Jiří Bartoš — Full-stack software engineer, inspired by creative and user-centric design, thriving in 0→1 work';
+export const META_KEYWORDS = ['bartosjiri', 'full-stack', 'software', 'engineer'];
 
 export const META_THEME_COLOR = '#101010';
 export const META_APPLE_COLOR = '#fb4248';
