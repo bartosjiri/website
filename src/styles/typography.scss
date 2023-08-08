@@ -5,7 +5,7 @@
 	--font-size-02: 1.8rem;
 	@include fluid.fluid(--font-size-01, 14, 16);
 	@include fluid.fluid(--font-size-02, 16, 18);
-	@include fluid.fluid(--font-size-03, 32, 48);
+	@include fluid.fluid(--font-size-03, 32, 40);
 }
 
 body {

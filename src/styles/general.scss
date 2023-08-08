@@ -23,7 +23,8 @@ body {
 		text-decoration: none;
 	}
 
-	// ::selection {
-	// 	background-color: transparent;
-	// }
+	::selection {
+		color: var(--color-foreground-01);
+		background-color: var(--color-background-02);
+	}
 }
