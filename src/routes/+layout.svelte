@@ -1,9 +1,11 @@
 <script>
+	import { FathomAnalytics } from '$util/fathom-analytics';
 	import { Tooltip } from '$lib/primitives';
 
 	import '../styles/_global.scss';
 </script>
 
+<FathomAnalytics />
 <main>
 	<slot />
 </main>
