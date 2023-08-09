@@ -38,6 +38,7 @@
 
 <style lang="scss">
 	.tooltip {
+		display: none;
 		position: fixed;
 		padding: var(--spacing-01) var(--spacing-03);
 		background: var(--color-background-01);
@@ -50,6 +51,10 @@
 		span {
 			font-size: var(--font-size-01);
 			white-space: pre;
+		}
+
+		@media (hover: hover) {
+			display: initial;
 		}
 	}
 </style>
