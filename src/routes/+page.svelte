@@ -126,7 +126,7 @@
 			title="Full-stack engineer"
 			href={`mailto:${EMAIL}`}
 			timeframe="Since November 2019"
-			description="2 organizations in total, full resume available upon request"
+			description="Resume available upon request"
 			tooltip="Send email to hi@bartosjiri.com"
 		/>
 	</div>
@@ -135,12 +135,8 @@
 <section class:contact={true}>
 	<h2>Links</h2>
 	<div class:list={true}>
-		<Link
-			href="https://twitter.com/bartosjiri_"
-			target="_blank"
-			data-tooltip="Open twitter.com/bartosjiri_"
-		>
-			Twitter
+		<Link href="https://x.com/bartosjiri_" target="_blank" data-tooltip="Open x.com/bartosjiri_">
+			X/Twitter
 		</Link>
 		<Link
 			href="https://github.com/bartosjiri"
