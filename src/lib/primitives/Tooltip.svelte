@@ -26,35 +26,39 @@
 </script>
 
 <svelte:window on:mousemove={handleMouseMove} />
-{#if isHovering && content}
-	<div
-		class:tooltip={true}
-		style={`top: ${cursorPosition[1] + 4}px; left: ${cursorPosition[0] + 4}px;`}
-		transition:fade={{ duration: 150 }}
-	>
-		<span>{content}</span>
-	</div>
-{/if}
+<div
+	class:tooltip-tracker={true}
+	style={`top: ${cursorPosition[1] + 4}px; left: ${cursorPosition[0] + 4}px;`}
+>
+	{#if isHovering && content}
+		<div class:tooltip={true} transition:fade={{ duration: 150 }}>
+			<span>{content}</span>
+		</div>
+	{/if}
+</div>
 
 <style lang="scss">
-	.tooltip {
-		display: none;
+	.tooltip-tracker {
 		position: fixed;
-		padding: var(--spacing-01) var(--spacing-03);
-		background: var(--color-background-01);
-		border: 1px solid var(--color-foreground-02);
-		border-radius: 10px;
-		box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-		pointer-events: none;
-		z-index: 9999;
 
-		span {
-			font-size: var(--font-size-01);
-			white-space: pre;
-		}
+		.tooltip {
+			display: none;
+			padding: var(--spacing-01) var(--spacing-03);
+			background: var(--color-background-01);
+			border: 1px solid var(--color-foreground-02);
+			border-radius: 10px;
+			box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+			pointer-events: none;
+			z-index: 9999;
 
-		@media (hover: hover) {
-			display: initial;
+			span {
+				font-size: var(--font-size-01);
+				white-space: pre;
+			}
+
+			@media (hover: hover) {
+				display: initial;
+			}
 		}
 	}
 </style>
