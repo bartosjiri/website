@@ -77,6 +77,7 @@
 			span {
 				display: inline-block;
 				color: var(--color-foreground-03);
+				margin-left: 2px;
 			}
 		}
 

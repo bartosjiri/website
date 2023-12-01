@@ -3,29 +3,24 @@
 
 	import { Pill, StatusDot, LocalTime, Divider, ProjectCard, Link } from '$lib/primitives';
 
+	import { removeUrlProtocol } from '$lib/helpers';
+
+	import { PROJECTS } from '$modules/projects';
+	import { CONTACT_EMAIL, CONTACT_GITHUB, CONTACT_X } from '$modules/contact';
+
 	import BartosjiriLogo from '$assets/bartosjiri-logo.svg?raw';
-	import WeardrobeLogo from '$assets/weardrobe-logo.svg?raw';
-	import WeardrobeLogoOutline from '$assets/weardrobe-logo-outline.svg?raw';
-	import MultisightLogo from '$assets/multisight-logo.svg?raw';
-	import MultisightLogoOutline from '$assets/multisight-logo-outline.svg?raw';
-	import GgtvLogo from '$assets/ggtv-logo.svg?raw';
-	import GgtvLogoOutline from '$assets/ggtv-logo-outline.svg?raw';
-	import MixtapesLogo from '$assets/mixtapes-logo.svg?raw';
-	import MixtapesLogoOutline from '$assets/mixtapes-logo-outline.svg?raw';
-	import HyperhidrosisLogo from '$assets/hyperhidrosis-logo.svg?raw';
-	import HyperhidrosisLogoOutline from '$assets/hyperhidrosis-logo-outline.svg?raw';
-	import GoblinphoneLogo from '$assets/goblinphone-logo.svg?raw';
-	import GoblinphoneLogoOutline from '$assets/goblinphone-logo-outline.svg?raw';
 	import CareerLogo from '$assets/career-logo.svg?raw';
 	import CareerLogoOutline from '$assets/career-logo-outline.svg?raw';
-
-	const EMAIL = 'hi@bartosjiri.com';
 </script>
 
 <PageMeta />
 
 <section class:header={true}>
-	<Pill href={`mailto:${EMAIL}`} class="status" data-tooltip={`Send email to ${EMAIL}`}>
+	<Pill
+		href={`mailto:${CONTACT_EMAIL}`}
+		class="status"
+		data-tooltip={`Send email to ${CONTACT_EMAIL}`}
+	>
 		<StatusDot isPulsing={true} />
 		<span>Looking for new full-time job opportunity</span>
 	</Pill>
@@ -60,60 +55,17 @@
 <section class:projects={true}>
 	<h2>Side-projects</h2>
 	<div class:list={true}>
-		<ProjectCard
-			logo={WeardrobeLogo}
-			logoOutline={WeardrobeLogoOutline}
-			title="Weardrobe"
-			href="https://weardrobe.xyz"
-			timeframe="Now"
-			description="A community-curated digital fashion gallery"
-			tooltip="Open weardrobe.xyz"
-		/>
-		<ProjectCard
-			logo={MultisightLogo}
-			logoOutline={MultisightLogoOutline}
-			title="Multisight"
-			href="https://multisight.app"
-			timeframe="July 2023"
-			description="A multisignature wallet response activity analytics tool"
-			tooltip="Open multisight.app"
-		/>
-		<ProjectCard
-			logo={GgtvLogo}
-			logoOutline={GgtvLogoOutline}
-			title="GGTV"
-			href="https://gulaggang.tv"
-			timeframe="June 2023"
-			description="A GTA5 roleplay community content hub"
-			tooltip="Open gulaggang.tv"
-		/>
-		<ProjectCard
-			logo={MixtapesLogo}
-			logoOutline={MixtapesLogoOutline}
-			title="Mixtapes"
-			href="https://mixtapes.bartosjiri.com"
-			timeframe="May 2023"
-			description="A showcase of personal playlists"
-			tooltip="Open mixtapes.bartosjiri.com"
-		/>
-		<ProjectCard
-			logo={HyperhidrosisLogo}
-			logoOutline={HyperhidrosisLogoOutline}
-			title="Hyperhidrosis.help"
-			href="https://hyperhidrosis.help"
-			timeframe="April 2023"
-			description="An educational microsite about hyperhidrosis"
-			tooltip="Open hyperhidrosis.help"
-		/>
-		<ProjectCard
-			logo={GoblinphoneLogo}
-			logoOutline={GoblinphoneLogoOutline}
-			title="Goblin Phone"
-			href="https://goblinphone.vercel.app"
-			timeframe="June 2022"
-			description="An NFT collection derivative art project"
-			tooltip="Open goblinphone.vercel.app"
-		/>
+		{#each PROJECTS as { title, logo, logoOutline, description, href, timeframe }}
+			<ProjectCard
+				{title}
+				{logo}
+				{logoOutline}
+				{description}
+				{href}
+				{timeframe}
+				tooltip={`Open ${removeUrlProtocol(href)}`}
+			/>
+		{/each}
 	</div>
 </section>
 
@@ -124,10 +76,10 @@
 			logo={CareerLogo}
 			logoOutline={CareerLogoOutline}
 			title="Full-stack engineer"
-			href={`mailto:${EMAIL}`}
+			href={`mailto:${CONTACT_EMAIL}`}
 			timeframe="Since November 2019"
 			description="Resume available upon request"
-			tooltip="Send email to hi@bartosjiri.com"
+			tooltip={`Send email to ${CONTACT_EMAIL}`}
 		/>
 	</div>
 </section>
@@ -135,17 +87,21 @@
 <section class:contact={true}>
 	<h2>Links</h2>
 	<div class:list={true}>
-		<Link href="https://x.com/bartosjiri_" target="_blank" data-tooltip="Open x.com/bartosjiri_">
+		<Link href={CONTACT_X} target="_blank" data-tooltip={`Open ${removeUrlProtocol(CONTACT_X)}`}>
 			X/Twitter
 		</Link>
 		<Link
-			href="https://github.com/bartosjiri"
+			href={CONTACT_GITHUB}
 			target="_blank"
-			data-tooltip="Open github.com/bartosjiri"
+			data-tooltip={`Open ${removeUrlProtocol(CONTACT_GITHUB)}`}
 		>
 			GitHub
 		</Link>
-		<Link href={`mailto:${EMAIL}`} target="_blank" data-tooltip={`Send email to ${EMAIL}`}>
+		<Link
+			href={`mailto:${CONTACT_EMAIL}`}
+			target="_blank"
+			data-tooltip={`Send email to ${CONTACT_EMAIL}`}
+		>
 			Email
 		</Link>
 	</div>
