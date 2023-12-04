@@ -1,5 +1,7 @@
 import type { ProjectT } from './projects.types';
 
+import DogvisionLogo from '$assets/dogvision-logo.svg?raw';
+import DogvisionLogoOutline from '$assets/dogvision-logo-outline.svg?raw';
 import WeardrobeLogo from '$assets/weardrobe-logo.svg?raw';
 import WeardrobeLogoOutline from '$assets/weardrobe-logo-outline.svg?raw';
 import MultisightLogo from '$assets/multisight-logo.svg?raw';
@@ -14,6 +16,14 @@ import GoblinphoneLogo from '$assets/goblinphone-logo.svg?raw';
 import GoblinphoneLogoOutline from '$assets/goblinphone-logo-outline.svg?raw';
 
 export const PROJECTS: ProjectT[] = [
+	{
+		title: 'DogVision',
+		logo: DogvisionLogo,
+		logoOutline: DogvisionLogoOutline,
+		description: "An app for visualizing a dog's color perception",
+		href: 'https://dogvision.vercel.app',
+		timeframe: 'December 2023'
+	},
 	{
 		title: 'Weardrobe',
 		logo: WeardrobeLogo,
