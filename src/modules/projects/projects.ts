@@ -25,14 +25,6 @@ export const PROJECTS: ProjectT[] = [
 		timeframe: 'December 2023'
 	},
 	{
-		title: 'Weardrobe',
-		logo: WeardrobeLogo,
-		logoOutline: WeardrobeLogoOutline,
-		description: 'A community-curated digital fashion gallery',
-		href: 'https://weardrobe.xyz',
-		timeframe: 'Now'
-	},
-	{
 		title: 'Multisight',
 		logo: MultisightLogo,
 		logoOutline: MultisightLogoOutline,
@@ -57,7 +49,7 @@ export const PROJECTS: ProjectT[] = [
 		timeframe: 'May 2023'
 	},
 	{
-		title: 'Hyperhidrosis.help',
+		title: 'Hyperhidrosis Help',
 		logo: HyperhidrosisLogo,
 		logoOutline: HyperhidrosisLogoOutline,
 		description: 'An educational microsite about hyperhidrosis',
@@ -65,7 +57,15 @@ export const PROJECTS: ProjectT[] = [
 		timeframe: 'April 2023'
 	},
 	{
-		title: 'Goblinphone',
+		title: 'Weardrobe',
+		logo: WeardrobeLogo,
+		logoOutline: WeardrobeLogoOutline,
+		description: 'A community-curated digital fashion gallery',
+		href: 'https://weardrobe.xyz',
+		timeframe: 'November 2022'
+	},
+	{
+		title: 'Goblin Phone',
 		logo: GoblinphoneLogo,
 		logoOutline: GoblinphoneLogoOutline,
 		description: 'An NFT collection derivative art project',

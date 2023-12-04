@@ -34,8 +34,8 @@
 <section class:intro={true}>
 	<h1>
 		{@html BartosjiriLogo}
-		<span>Jiří&nbsp;Bartoš</span> — Full&#8209;stack software engineer, inspired&nbsp;by creative and&nbsp;user&#8209;centric
-		design, thriving&nbsp;in 0→1&nbsp;work
+		<span>Jiří&nbsp;Bartoš</span> — Full&#8209;stack software engineer, specializing&nbsp;in creative
+		and&nbsp;user&#8209;centered design, thriving&nbsp;in 0→1&nbsp;work
 	</h1>
 </section>
 
@@ -44,11 +44,11 @@
 <section class:now-and-next={true}>
 	<div class:item={true}>
 		<h2>Currently&nbsp;</h2>
-		<p>building more side-projects, diving into AR development</p>
+		<p>building more side-projects, learning and thinking about sustainable future</p>
 	</div>
 	<div class:item={true}>
 		<h2>Later&nbsp;</h2>
-		<p>starting a little personal company, getting a puppy</p>
+		<p>exploring computer graphics & AR development, getting a puppy</p>
 	</div>
 </section>
 
