@@ -32,7 +32,8 @@
 		}
 
 		@keyframes statusDotAnimation {
-			0% {
+			0%,
+			10% {
 				transform: scale(0.95);
 				box-shadow: 0 0 0 0 var(--color);
 			}
