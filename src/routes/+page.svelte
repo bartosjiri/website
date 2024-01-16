@@ -26,8 +26,9 @@
 	</Pill>
 	<div class:time={true}>
 		<span>Based in Prague,</span>
-		<LocalTime />
-		<span>local time</span>
+		<LocalTime>
+			<span>local time</span>
+		</LocalTime>
 	</div>
 </section>
 
