@@ -148,7 +148,7 @@
 
 		span {
 			display: inline-block;
-			transform: skewX(18deg);
+			transform: skewX(17.5deg);
 		}
 	}
 
