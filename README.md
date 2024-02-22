@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://about.bartosjiri.com" target="_blank"><img src="static/meta/repository-logo.png" alt="Repository logo" /></a>
+  <a href="https://bartosjiri.com" target="_blank"><img src="static/meta/repository-logo.png" alt="Repository logo" /></a>
 </p>
 
 ## Requirements

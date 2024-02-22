@@ -54,7 +54,7 @@
 </section>
 
 <section class:projects={true}>
-	<h2>Side-projects</h2>
+	<h2>Personal projects</h2>
 	<div class:list={true}>
 		{#each PROJECTS as { title, logo, logoOutline, description, href, timeframe }}
 			<ProjectCard
