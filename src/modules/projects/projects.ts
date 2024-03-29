@@ -6,8 +6,8 @@ import WeardrobeLogo from '$assets/weardrobe-logo.svg?raw';
 import WeardrobeLogoOutline from '$assets/weardrobe-logo-outline.svg?raw';
 import MultisightLogo from '$assets/multisight-logo.svg?raw';
 import MultisightLogoOutline from '$assets/multisight-logo-outline.svg?raw';
-import GgtvLogo from '$assets/ggtv-logo.svg?raw';
-import GgtvLogoOutline from '$assets/ggtv-logo-outline.svg?raw';
+// import GgtvLogo from '$assets/ggtv-logo.svg?raw';
+// import GgtvLogoOutline from '$assets/ggtv-logo-outline.svg?raw';
 import MixtapesLogo from '$assets/mixtapes-logo.svg?raw';
 import MixtapesLogoOutline from '$assets/mixtapes-logo-outline.svg?raw';
 import HyperhidrosisLogo from '$assets/hyperhidrosis-logo.svg?raw';
@@ -32,14 +32,14 @@ export const PROJECTS: ProjectT[] = [
 		href: 'https://multisight.app',
 		timeframe: 'July 2023'
 	},
-	{
-		title: 'GGTV',
-		logo: GgtvLogo,
-		logoOutline: GgtvLogoOutline,
-		description: 'A GTA5 roleplay community content hub',
-		href: 'https://gulaggang.tv',
-		timeframe: 'June 2023'
-	},
+	// {
+	// 	title: 'GGTV',
+	// 	logo: GgtvLogo,
+	// 	logoOutline: GgtvLogoOutline,
+	// 	description: 'A GTA5 roleplay community content hub',
+	// 	href: 'https://gulaggang.tv',
+	// 	timeframe: 'June 2023'
+	// },
 	{
 		title: 'Mixtapes',
 		logo: MixtapesLogo,
