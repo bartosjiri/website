@@ -4,6 +4,6 @@
 	.divider {
 		width: 100%;
 		height: 1px;
-		background: var(--color-background-02);
+		background: var(--color-gray-04);
 	}
 </style>

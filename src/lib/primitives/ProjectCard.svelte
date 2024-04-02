@@ -27,9 +27,9 @@
 		display: flex;
 		flex-direction: column;
 		padding: var(--spacing-03);
-		border: 1px solid var(--color-background-02);
+		border: 1px solid var(--color-gray-04);
 		border-radius: 16px;
-		transition-property: border;
+		transition-property: background, border;
 		transition-duration: var(--transition-duration-01);
 		transition-timing-function: var(--transition-function-01);
 
@@ -53,12 +53,12 @@
 					opacity: 1;
 					z-index: -1;
 					box-sizing: border-box;
-					border: 1px solid var(--color-foreground-03);
+					border: 1px solid var(--color-gray-04);
 					border-radius: 8px;
 
 					:global(path),
 					:global(rect) {
-						stroke: var(--color-foreground-03);
+						stroke: var(--color-gray-05);
 						stroke-width: 1px;
 					}
 				}
@@ -90,7 +90,8 @@
 		}
 
 		&:hover {
-			border-color: var(--color-foreground-02);
+			background: var(--color-gray-01);
+			border-color: var(--color-gray-05);
 
 			.logo {
 				:global(svg) {

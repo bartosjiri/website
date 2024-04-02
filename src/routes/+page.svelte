@@ -201,7 +201,7 @@
 			:global(.project-card) {
 				:global(svg) {
 					&:nth-of-type(1) {
-						fill: var(--color-background-02);
+						fill: var(--color-foreground-01);
 					}
 				}
 			}
@@ -221,6 +221,10 @@
 
 			:global(.link) {
 				color: var(--color-foreground-02);
+
+				&:hover {
+					color: var(--color-foreground-01);
+				}
 			}
 		}
 	}

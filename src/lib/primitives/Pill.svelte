@@ -11,16 +11,17 @@
 		display: inline-flex;
 		align-items: center;
 		padding: var(--spacing-01) var(--spacing-03);
-		border: 1px solid var(--color-background-02);
+		border: 1px solid var(--color-gray-04);
 		border-radius: 9999px;
-		transition-property: border;
+		transition-property: background, border;
 		transition-duration: var(--transition-duration-01);
 		transition-timing-function: var(--transition-function-01);
 	}
 
 	a.pill {
 		&:hover {
-			border-color: var(--color-foreground-02);
+			background: var(--color-gray-01);
+			border-color: var(--color-gray-05);
 		}
 	}
 </style>

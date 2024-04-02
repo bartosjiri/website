@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { slide, fade } from 'svelte/transition';
-	import { sineInOut } from 'svelte/easing';
+	import { fly, fade } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 
 	let content: string | null;
 	let isHovering = false;
@@ -34,8 +34,8 @@
 	{#if isHovering && content}
 		<div
 			class:tooltip={true}
-			in:slide={{ duration: 125, easing: sineInOut, axis: 'x' }}
-			out:fade={{ duration: 125, easing: sineInOut }}
+			in:fly={{ duration: 150, easing: cubicOut, x: -6, y: -6 }}
+			out:fade={{ duration: 150, easing: cubicOut }}
 		>
 			<span>{content}</span>
 		</div>
@@ -51,7 +51,7 @@
 			position: relative;
 			width: 100%;
 			background: var(--color-background-01);
-			border: 1px solid var(--color-foreground-02);
+			border: 1px solid var(--color-gray-06);
 			border-radius: 10px;
 			box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
 			pointer-events: none;

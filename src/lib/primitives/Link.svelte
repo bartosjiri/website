@@ -12,6 +12,9 @@
 		display: inline-flex;
 		align-items: center;
 		color: inherit;
+		transition-property: color;
+		transition-duration: var(--transition-duration-01);
+		transition-timing-function: var(--transition-function-01);
 
 		&:after {
 			content: '';
@@ -20,7 +23,7 @@
 			left: 0;
 			width: 100%;
 			height: 1px;
-			background: var(--color-foreground-02);
+			background: var(--color-gray-05);
 			opacity: 0;
 			transition-property: opacity;
 			transition-duration: var(--transition-duration-01);
@@ -28,6 +31,8 @@
 		}
 
 		&:hover {
+			color: var(--color-foreground-01);
+
 			&:after {
 				opacity: 1;
 			}
