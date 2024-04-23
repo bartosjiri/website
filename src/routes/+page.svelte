@@ -16,14 +16,6 @@
 <PageMeta />
 
 <section class:header={true}>
-	<Pill
-		href={`mailto:${CONTACT_EMAIL}`}
-		class="status"
-		data-tooltip={`Send email to ${CONTACT_EMAIL}`}
-	>
-		<StatusDot isPulsing={true} />
-		<span>Looking for new full-time job opportunity</span>
-	</Pill>
 	<div class:time={true}>
 		<span>Based in Prague,</span>
 		<LocalTime>
@@ -35,7 +27,7 @@
 <section class:intro={true}>
 	<h1>
 		{@html BartosjiriLogo}
-		<span>Jiří&nbsp;Bartoš</span> — Full&#8209;stack software engineer, specializing&nbsp;in creative
+		<span>Jiří&nbsp;Bartoš</span> — Full&#8209;stack software engineer, specializing in&nbsp;creative
 		and&nbsp;user&#8209;centered design, thriving&nbsp;in 0→1&nbsp;work
 	</h1>
 </section>
@@ -45,11 +37,11 @@
 <section class:now-and-next={true}>
 	<div class:item={true}>
 		<h2>Currently&nbsp;</h2>
-		<p>building more side-projects, learning and thinking about sustainable future</p>
+		<p>building more side-projects, getting a puppy</p>
 	</div>
 	<div class:item={true}>
 		<h2>Later&nbsp;</h2>
-		<p>exploring computer graphics & AR development, getting a puppy</p>
+		<p>exploring computer graphics & AR development, dreaming about solarpunk</p>
 	</div>
 </section>
 
