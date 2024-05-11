@@ -1,154 +1,76 @@
 <script lang="ts">
-	import {
-		META_TITLE,
-		META_DESCRIPTION,
-		META_KEYWORDS,
-		META_OG_IMAGE_WIDTH,
-		META_OG_IMAGE_HEIGHT,
-		META_OG_IMAGE_URL,
-		META_OG_URL,
-		META_THEME_COLOR,
-		META_APPLE_COLOR,
-		META_MICROSOFT_COLOR,
-		META_VERSION
-	} from './meta.config';
+	import * as META from './meta.config';
 
-	import type { OpenGraph, Twitter } from './pageMeta.types';
-
-	export let title: string = '';
-	export let fullTitle: string | undefined = undefined;
-	export let description: string = META_DESCRIPTION;
-	export let keywords: string[] = META_KEYWORDS;
-	export let canonical: string | null = null;
-	export let openGraph: OpenGraph | undefined = undefined;
-	export let twitter: Twitter | undefined = undefined;
+	export let title: string | null = null;
+	export let fullTitle: string | null = null;
+	export let description: string = META.META_DESCRIPTION;
+	export let keywords: string[] = META.META_KEYWORDS;
+	export let ogImageUrl: string = META.META_OG_IMAGE_URL;
+	export let ogImageWidth = META.META_OG_IMAGE_WIDTH;
+	export let ogImageHeight = META.META_OG_IMAGE_HEIGHT;
 	export let noindex = false;
 	export let nofollow = false;
 
-	const _title = fullTitle || (title ? `${title} – ${META_TITLE}` : META_TITLE);
+	$: pageTitle = fullTitle || (title ? `${title} — ${META.META_TITLE}` : META.META_TITLE);
 </script>
 
 <svelte:head>
-	<meta
-		name="robots"
-		content={`${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}`}
-	/>
-	<meta
-		name="googlebot"
-		content={`${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}`}
-	/>
+	{#if noindex || nofollow}
+		<meta
+			name="robots"
+			content={[noindex && 'noindex', nofollow && 'nofollow'].filter(Boolean).join(',')}
+		/>
+	{/if}
 
 	<link
 		rel="apple-touch-icon"
 		sizes="180x180"
-		href={`/meta/apple-touch-icon.png?v=${META_VERSION}`}
+		href={`/meta/apple-touch-icon.png?v=${META.META_VERSION}`}
 	/>
-	<link rel="icon" type="image/svg+xml" href="/meta/favicon.svg?v=${META_VERSION}" />
-	<link rel="icon" type="image/png" href="/meta/favicon.png?v=${META_VERSION}" />
-	<link rel="manifest" href={`/meta/site.webmanifest?v=${META_VERSION}`} />
+	<link rel="icon" type="image/svg+xml" href="/meta/favicon.svg?v=${META.META_VERSION}" />
+	<link rel="icon" type="image/png" href="/meta/favicon.png?v=${META.META_VERSION}" />
+	<link
+		rel="icon"
+		type="image/png"
+		sizes="32x32"
+		href="/meta/favicon-32x32.png?v=${META.META_VERSION}"
+	/>
+	<link
+		rel="icon"
+		type="image/png"
+		sizes="16x16"
+		href="/meta/favicon-16x16.png?v=${META.META_VERSION}"
+	/>
+	<link rel="manifest" href={`/meta/site.webmanifest?v=${META.META_VERSION}`} />
 	<link
 		rel="mask-icon"
-		href={`/meta/safari-pinned-tab.svg?v=${META_VERSION}`}
-		color={META_APPLE_COLOR}
+		href={`/meta/safari-pinned-tab.svg?v=${META.META_VERSION}`}
+		color={META.META_COLOR_APPLE}
 	/>
-	<meta name="msapplication-TileColor" content={META_MICROSOFT_COLOR} />
-	<meta name="theme-color" content={META_THEME_COLOR} />
+	<link rel="shortcut icon" href={`/meta/favicon.ico?v=${META.META_VERSION}`} />
+	<meta name="msapplication-TileColor" content={META.META_COLOR_MICROSOFT} />
+	<meta name="msapplication-config" content={`/meta/browserconfig.xml?v=${META.META_VERSION}`} />
+	<meta name="theme-color" content={META.META_COLOR_THEME} />
 
-	<title>{_title}</title>
-	<meta property="og:title" content={openGraph?.title || _title} />
-	<meta name="twitter:title" content={twitter?.title || _title} />
-
+	<title>{pageTitle}</title>
 	<meta name="description" content={description} />
-	<meta property="og:description" content={openGraph?.description || description} />
-	<meta name="twitter:description" content={twitter?.description || description} />
+	<meta name="keywords" content={keywords.join(', ')} />
+	<!-- <meta name="author" content={author} /> -->
 
-	{#if keywords.length}
-		<meta name="keywords" content={keywords.join(', ')} />
-	{/if}
+	<meta property="og:url" content={META.META_OG_URL} />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content={META.META_TITLE} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:image" content={`${ogImageUrl}?v=${META.META_VERSION}`} />
+	<meta property="og:image:width" content={String(ogImageWidth)} />
+	<meta property="og:image:height" content={String(ogImageHeight)} />
+	<meta property="og:image:alt" content={pageTitle} />
 
-	{#if canonical}
-		<link rel="canonical" href={canonical} />
-	{/if}
-
-	{#if !openGraph?.images?.length}
-		<meta property="og:url" content={META_OG_URL} />
-		<meta property="og:image" content={META_OG_IMAGE_URL} />
-		<meta property="og:image:width" content={META_OG_IMAGE_WIDTH.toString()} />
-		<meta property="og:image:height" content={META_OG_IMAGE_HEIGHT.toString()} />
-	{/if}
-
-	{#if !twitter?.image}
-		<meta name="twitter:card" content={'summary_large_image'} />
-		<meta name="twitter:image" content={META_OG_IMAGE_URL} />
-	{/if}
-
-	{#if openGraph}
-		{#if openGraph.type}
-			<meta property="og:type" content={openGraph.type.toLowerCase()} />
-		{/if}
-		{#if openGraph.article}
-			{#if openGraph.article.publishedTime}
-				<meta property="article:published_time" content={openGraph.article.publishedTime} />
-			{/if}
-			{#if openGraph.article.modifiedTime}
-				<meta property="article:modified_time" content={openGraph.article.modifiedTime} />
-			{/if}
-			{#if openGraph.article.expirationTime}
-				<meta property="article:expiration_time" content={openGraph.article.expirationTime} />
-			{/if}
-			{#if openGraph.article.section}
-				<meta property="article:section" content={openGraph.article.section} />
-			{/if}
-			{#if openGraph.article.authors}
-				{#each openGraph.article.authors as author}
-					<meta property="article:author" content={author} />
-				{/each}
-			{/if}
-			{#if openGraph.article.tags}
-				{#each openGraph.article.tags as tag}
-					<meta property="article:tag" content={tag} />
-				{/each}
-			{/if}
-			{#if openGraph.images && openGraph.images.length}
-				{#each openGraph.images as image}
-					<meta property="og:image" content={image.url} />
-					{#if image.alt}
-						<meta property="og:image:alt" content={image.alt} />
-					{/if}
-					{#if image.width}
-						<meta property="og:image:width" content={image.width.toString()} />
-					{/if}
-					{#if image.height}
-						<meta property="og:image:height" content={image.height.toString()} />
-					{/if}
-				{/each}
-			{/if}
-		{/if}
-	{/if}
-
-	{#if twitter}
-		{#if twitter.card}
-			<meta name="twitter:card" content={twitter.card || 'summary_large_image'} />
-		{/if}
-		{#if twitter.site}
-			<meta name="twitter:site" content={twitter.site} />
-		{/if}
-		{#if twitter.image}
-			<meta name="twitter:image" content={twitter.image} />
-		{/if}
-		{#if twitter.imageAlt}
-			<meta name="twitter:image:alt" content={twitter.imageAlt} />
-		{/if}
-		{#if twitter.player}
-			<meta name="twitter:player" content={twitter.player} />
-		{/if}
-		{#if twitter.playerWidth}
-			<meta name="twitter:player:width" content={twitter.playerWidth.toString()} />
-		{/if}
-		{#if twitter.playerHeight}
-			<meta name="twitter:player:height" content={twitter.playerHeight.toString()} />
-		{/if}
-	{/if}
-
-	<slot />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content={META.META_OG_URL} />
+	<!-- <meta name="twitter:creator" content={author} /> -->
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content={`${ogImageUrl}?v=${META.META_VERSION}`} />
+	<meta name="twitter:image:alt" content={pageTitle} />
 </svelte:head>
