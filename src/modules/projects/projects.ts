@@ -28,7 +28,7 @@ export const PROJECTS: ProjectT[] = [
 		title: 'Multisight',
 		logo: MultisightLogo,
 		logoOutline: MultisightLogoOutline,
-		description: 'A multisignature wallet response activity analytics tool',
+		description: 'A knowledge platform on multisignature wallets',
 		href: 'https://multisight.app',
 		timeframe: 'July 2023'
 	},
