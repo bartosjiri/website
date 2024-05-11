@@ -1,11 +1,11 @@
 <script>
-	import { FathomAnalytics } from '$util/fathom-analytics';
+	import { UmamiAnalytics } from '$util/umami-analytics';
 	import { Tooltip } from '$lib/primitives';
 
 	import '../styles/_global.scss';
 </script>
 
-<FathomAnalytics />
+<UmamiAnalytics />
 <main>
 	<slot />
 </main>
