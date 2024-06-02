@@ -1,5 +1,7 @@
 import type { ProjectT } from './projects.types';
 
+import WebuytheartLogo from '$assets/webuytheart-logo.svg?raw';
+import WebuytheartLogoOutline from '$assets/webuytheart-logo-outline.svg?raw';
 import DogvisionLogo from '$assets/dogvision-logo.svg?raw';
 import DogvisionLogoOutline from '$assets/dogvision-logo-outline.svg?raw';
 import WeardrobeLogo from '$assets/weardrobe-logo.svg?raw';
@@ -12,10 +14,18 @@ import MixtapesLogo from '$assets/mixtapes-logo.svg?raw';
 import MixtapesLogoOutline from '$assets/mixtapes-logo-outline.svg?raw';
 import HyperhidrosisLogo from '$assets/hyperhidrosis-logo.svg?raw';
 import HyperhidrosisLogoOutline from '$assets/hyperhidrosis-logo-outline.svg?raw';
-import GoblinphoneLogo from '$assets/goblinphone-logo.svg?raw';
-import GoblinphoneLogoOutline from '$assets/goblinphone-logo-outline.svg?raw';
+// import GoblinphoneLogo from '$assets/goblinphone-logo.svg?raw';
+// import GoblinphoneLogoOutline from '$assets/goblinphone-logo-outline.svg?raw';
 
 export const PROJECTS: ProjectT[] = [
+	{
+		title: 'We Buy The Art',
+		logo: WebuytheartLogo,
+		logoOutline: WebuytheartLogoOutline,
+		description: 'A superchain art collector community',
+		href: 'https://webuythe.art',
+		timeframe: 'May 2024'
+	},
 	{
 		title: 'DogVision',
 		logo: DogvisionLogo,
@@ -63,13 +73,13 @@ export const PROJECTS: ProjectT[] = [
 		description: 'A community-curated digital fashion gallery',
 		href: 'https://weardrobe.xyz',
 		timeframe: 'November 2022'
-	},
-	{
-		title: 'Goblin Phone',
-		logo: GoblinphoneLogo,
-		logoOutline: GoblinphoneLogoOutline,
-		description: 'An NFT collection derivative art project',
-		href: 'https://goblinphone.vercel.app',
-		timeframe: 'June 2022'
 	}
+	// {
+	// 	title: 'Goblin Phone',
+	// 	logo: GoblinphoneLogo,
+	// 	logoOutline: GoblinphoneLogoOutline,
+	// 	description: 'An NFT collection derivative art project',
+	// 	href: 'https://goblinphone.vercel.app',
+	// 	timeframe: 'June 2022'
+	// }
 ];
