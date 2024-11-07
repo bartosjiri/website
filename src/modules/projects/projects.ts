@@ -1,11 +1,13 @@
 import type { ProjectT } from './projects.types';
 
+import SupechainchingblingsLogo from '$assets/superchainchiblings-logo.svg?raw';
+import SuperchainchiblingsLogoOutline from '$assets/superchainchiblings-logo-outline.svg?raw';
 import WebuytheartLogo from '$assets/webuytheart-logo.svg?raw';
 import WebuytheartLogoOutline from '$assets/webuytheart-logo-outline.svg?raw';
 import DogvisionLogo from '$assets/dogvision-logo.svg?raw';
 import DogvisionLogoOutline from '$assets/dogvision-logo-outline.svg?raw';
-import WeardrobeLogo from '$assets/weardrobe-logo.svg?raw';
-import WeardrobeLogoOutline from '$assets/weardrobe-logo-outline.svg?raw';
+// import WeardrobeLogo from '$assets/weardrobe-logo.svg?raw';
+// import WeardrobeLogoOutline from '$assets/weardrobe-logo-outline.svg?raw';
 import MultisightLogo from '$assets/multisight-logo.svg?raw';
 import MultisightLogoOutline from '$assets/multisight-logo-outline.svg?raw';
 // import GgtvLogo from '$assets/ggtv-logo.svg?raw';
@@ -18,6 +20,14 @@ import HyperhidrosisLogoOutline from '$assets/hyperhidrosis-logo-outline.svg?raw
 // import GoblinphoneLogoOutline from '$assets/goblinphone-logo-outline.svg?raw';
 
 export const PROJECTS: ProjectT[] = [
+	{
+		title: "Superchain Chiblings",
+		logo: SupechainchingblingsLogo, 
+		logoOutline: SuperchainchiblingsLogoOutline, 
+		description: 'A custom superchain minting experience',
+		href: 'https://superchainchiblings.com',
+		timeframe: 'July 2024'
+	},
 	{
 		title: 'We Buy The Art',
 		logo: WebuytheartLogo,
@@ -38,7 +48,7 @@ export const PROJECTS: ProjectT[] = [
 		title: 'Multisight',
 		logo: MultisightLogo,
 		logoOutline: MultisightLogoOutline,
-		description: 'A knowledge platform on multisignature wallets',
+		description: 'An analytics tool for multisignature wallets',
 		href: 'https://multisight.app',
 		timeframe: 'July 2023'
 	},
@@ -66,14 +76,14 @@ export const PROJECTS: ProjectT[] = [
 		href: 'https://hyperhidrosis.help',
 		timeframe: 'April 2023'
 	},
-	{
-		title: 'Weardrobe',
-		logo: WeardrobeLogo,
-		logoOutline: WeardrobeLogoOutline,
-		description: 'A community-curated digital fashion gallery',
-		href: 'https://weardrobe.xyz',
-		timeframe: 'November 2022'
-	}
+	// {
+	// 	title: 'Weardrobe',
+	// 	logo: WeardrobeLogo,
+	// 	logoOutline: WeardrobeLogoOutline,
+	// 	description: 'A community-curated digital fashion gallery',
+	// 	href: 'https://weardrobe.xyz',
+	// 	timeframe: 'November 2022'
+	// }
 	// {
 	// 	title: 'Goblin Phone',
 	// 	logo: GoblinphoneLogo,
