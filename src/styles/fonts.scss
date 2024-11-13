@@ -1,0 +1,34 @@
+$font-family-01: 'Berkeley Mono';
+
+$font-family-01-variable: 'Berkeley Mono Variable';
+
+:root {
+	--font-family-01: #{$font-family-01}, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+	:root {
+		--font-family-01: #{$font-family-01-variable}, monospace;
+	}
+}
+
+@font-face {
+	font-family: $font-family-01-variable;
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src:
+		url('/fonts/BerkeleyMonoVariable-Regular.woff2') format('woff2'),
+		url('/fonts/BerkeleyMonoVariable-Regular.woff') format('woff2');
+}
+
+@font-face {
+	font-family: $font-family-01;
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src:
+		url('/fonts/BerkeleyMono-Regular.woff2') format('woff2'),
+		url('/fonts/BerkeleyMono-Regular.woff') format('woff');
+}

@@ -1,6 +1,3 @@
-/* @use './colors.scss' as *; */
-/* @use './fonts.scss' as *; */
-
 :root {
 	font-size: 62.5%;
 }
@@ -11,24 +8,34 @@ body {
 }
 
 body {
-	/* font-family: var(--font-family-01); */
-	/* font-size: var(--typography-size-01); */
-	font-weight: 400;
+	font-family: var(--font-family-01);
+	font-size: var(--typography-size-01);
+	font-weight: var(--typography-weight-01);
 	/* line-height: var(--typography-line-01); */
+	text-transform: uppercase;
 	text-decoration-skip-ink: none;
-	/* color: var(--color-foreground-01); */
-	/* background-color: var(--color-background-01); */
+	color: var(--color-foreground-01);
+	background-color: var(--color-background-01);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
 	-webkit-tap-highlight-color: transparent;
 
 	a {
+		color: var(--color-foreground-01);
 		text-decoration: none;
+
+		&:hover {
+			animation: var(--animation-01);
+		}
+	}
+
+	button {
+		text-transform: uppercase;
 	}
 
 	::selection {
-		/* color: var(--color-brand-02); */
-		/* background: var(--color-brand-01); */
+		color: var(--color-background-01);
+		background: var(--color-foreground-01);
 	}
 }
