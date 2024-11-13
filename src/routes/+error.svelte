@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 
-	import { PageMeta } from '$util/meta';
+	import { PageMeta } from '@/util/meta';
 
 	if (browser && $page.status === 404) {
 		location.replace('/');

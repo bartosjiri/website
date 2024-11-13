@@ -1,18 +1,33 @@
 <script lang="ts">
 	import * as META from './meta.config';
 
-	export let title: string | null = null;
-	export let fullTitle: string | null = null;
-	export let description: string = META.META_DESCRIPTION;
-	export let keywords: string[] = META.META_KEYWORDS;
-	export let author: string = META.META_AUTHOR;
-	export let ogImageUrl: string = META.META_OG_IMAGE_URL;
-	export let ogImageWidth = META.META_OG_IMAGE_WIDTH;
-	export let ogImageHeight = META.META_OG_IMAGE_HEIGHT;
-	export let noindex = false;
-	export let nofollow = false;
+	let {
+		title,
+		fullTitle,
+		description = META.META_DESCRIPTION,
+		keywords = META.META_KEYWORDS,
+		author = META.META_AUTHOR,
+		ogImageUrl = META.META_OG_IMAGE_URL,
+		ogImageWidth = META.META_OG_IMAGE_WIDTH,
+		ogImageHeight = META.META_OG_IMAGE_HEIGHT,
+		noindex = false,
+		nofollow = false
+	}: {
+		title?: string;
+		fullTitle?: string;
+		description?: string;
+		keywords?: string[];
+		author?: string;
+		ogImageUrl?: string;
+		ogImageWidth?: number;
+		ogImageHeight?: number;
+		noindex?: boolean;
+		nofollow?: boolean;
+	} = $props();
 
-	$: pageTitle = fullTitle || (title ? `${title} — ${META.META_TITLE}` : META.META_TITLE);
+	const pageTitle = $derived(
+		fullTitle || (title ? `${title} — ${META.META_TITLE}` : META.META_TITLE)
+	);
 </script>
 
 <svelte:head>

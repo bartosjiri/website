@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { afterNavigate } from '$app/navigation';
 
 	import { mediaContainerRef, selectedMediaIndex } from './catalog.store';
 
@@ -7,7 +8,11 @@
 
 	import type { CatalogItemT } from './catalog.types';
 
-	export let item: CatalogItemT;
+	let {
+		item
+	}: {
+		item: CatalogItemT;
+	} = $props();
 
 	const MEDIA_HEIGHT = (CATALOG_MEDIA_CONFIG.h as number[])[0];
 
@@ -15,15 +20,11 @@
 		selectedMediaIndex.set(index);
 	};
 
-	const resetMediaIndex = () => {
-		selectedMediaIndex.set(0);
-	};
-
-	$: isCurrentItem = $page.params.catalogId === item.id;
+	const isCurrentItem = $derived($page.params.catalogId === item.id);
 </script>
 
-<li class:catalog-item={true} class:--highlighted={isCurrentItem}>
-	<a href={isCurrentItem ? '/' : `/${item.id}`} on:click={resetMediaIndex}>
+<li class:catalog-item={true} class:-highlighted={isCurrentItem}>
+	<a href={isCurrentItem ? '/' : `/${item.id}`}>
 		<div class:name={true}>
 			<span>
 				{item.name}
@@ -48,8 +49,8 @@
 		<div bind:this={$mediaContainerRef} class:media={true}>
 			{#each item.media as media, index}
 				<button
-					on:click={() => handleMediaClick(index)}
-					class:--highlighted={$selectedMediaIndex === index}
+					onclick={() => handleMediaClick(index)}
+					class:-highlighted={$selectedMediaIndex === index}
 				>
 					<picture class:image={true}>
 						<source srcSet={media[MEDIA_HEIGHT].avif} type="image/avif" />
@@ -69,7 +70,7 @@
 		border-bottom: 1px solid var(--catalog-foreground-color);
 		overflow: hidden;
 
-		&.--highlighted {
+		&.-highlighted {
 			a {
 				color: var(--color-foreground-01);
 				animation: none;
@@ -133,7 +134,7 @@
 						var(--animation-iteration-01);
 				}
 
-				&.--highlighted {
+				&.-highlighted {
 					box-shadow: var(--button-inline) var(--color-foreground-01);
 					animation: none;
 				}

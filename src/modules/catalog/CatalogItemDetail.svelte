@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { goto, afterNavigate, beforeNavigate } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	import { centerMediaContainer } from './catalog.helpers';
 
@@ -7,20 +8,23 @@
 
 	import { CATALOG_MEDIA_CONFIG } from './catalog.config';
 
-	import type { CatalogListT, CatalogItemT } from '$modules/catalog';
+	import type { AfterNavigate, BeforeNavigate } from '@sveltejs/kit';
+	import type { CatalogListT, CatalogItemT } from './catalog.types';
 
-	export let catalog: CatalogListT;
-	export let item: CatalogItemT;
-	export let itemIndex: number;
+	let {
+		catalog,
+		item,
+		itemIndex
+	}: { catalog: CatalogListT; item: CatalogItemT; itemIndex: number } = $props();
 
 	const MEDIA_HEIGHT = (CATALOG_MEDIA_CONFIG.h as number[])[1];
 
-	const handleCatalogItemNavigation = (directionModifier: -1 | 1) => {
+	const handleCatalogItemNavigation = async (directionModifier: -1 | 1) => {
 		const targetItem = catalog[(itemIndex + directionModifier + catalog.length) % catalog.length];
 		const targetItemMediaCount = targetItem?.media?.length ?? 0;
 
+		await goto(targetItem.id);
 		selectedMediaIndex.set(directionModifier === 1 ? 0 : Math.max(targetItemMediaCount - 1, 0));
-		goto(targetItem.id);
 	};
 
 	const handleGalleryNavigation = (directionModifier: -1 | 1) => {
@@ -40,6 +44,18 @@
 		selectedMediaIndex.set(targetIdex);
 		centerMediaContainer(targetIdex);
 	};
+
+	const handleBrowserNavigation = (e: AfterNavigate) => {
+		const targetItem = catalog.find((item) => item.id === $page.params.catalogId);
+		if (!targetItem?.media) return;
+
+		if (['popstate', 'link'].includes(e?.type)) {
+			selectedMediaIndex.set(0);
+			return;
+		}
+	};
+
+	afterNavigate(handleBrowserNavigation);
 </script>
 
 <div class:catalog-item-detail={true}>
@@ -47,14 +63,16 @@
 		<div class:gallery={true}>
 			<button
 				class:controls={true}
-				class:--prev={true}
-				on:click={() => handleGalleryNavigation(-1)}
-			/>
+				class:-prev={true}
+				onclick={() => handleGalleryNavigation(-1)}
+				aria-label="Previous"
+			></button>
 			<button
 				class:controls={true}
-				class:--next={true}
-				on:click={() => handleGalleryNavigation(1)}
-			/>
+				class:-next={true}
+				onclick={() => handleGalleryNavigation(1)}
+				aria-label="Next"
+			></button>
 			<picture class:image={true}>
 				<source
 					srcSet={item.media?.[$selectedMediaIndex]?.[MEDIA_HEIGHT]?.avif}
@@ -122,14 +140,14 @@
 				--cursor-prev: w-resize;
 				--cursor-next: e-resize;
 
-				&.--prev {
+				&.-prev {
 					left: 0;
 					cursor: var(--cursor-prev);
 					animation: controPrevCursorBlink var(--animation-duration-01) var(--aniamtion-function-01)
 						var(--animation-iteration-01);
 				}
 
-				&.--next {
+				&.-next {
 					right: 0;
 					cursor: var(--cursor-next);
 					animation: controlNextCursorBlink var(--animation-duration-01)

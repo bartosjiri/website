@@ -1,5 +1,5 @@
 <header>
-	<a href="/">
+	<a href="/" aria-label="bartosjiri">
 		<svg viewBox="0 0 64 35" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M0.631348 0L11.6787 35H22.5576L11.5103 0H0.631348Z" />
 			<path d="M14.249 0L19.3423 16.1367H30.2212L25.1279 0H14.249Z" />

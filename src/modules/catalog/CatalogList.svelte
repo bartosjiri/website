@@ -5,10 +5,14 @@
 
 	import type { CatalogListT } from './catalog.types';
 
-	export let items: CatalogListT;
+	let {
+		items
+	}: {
+		items: CatalogListT;
+	} = $props();
 </script>
 
-<ul class:catalog-list={true} class:--highlighted={!$page.params.catalogId}>
+<ul class:catalog-list={true} class:-highlighted={!$page.params.catalogId}>
 	{#each items as item}
 		<CatalogItem {item} />
 	{/each}
@@ -20,7 +24,7 @@
 
 		overflow: auto;
 
-		&.--highlighted {
+		&.-highlighted {
 			--catalog-foreground-color: var(--color-foreground-01);
 		}
 	}

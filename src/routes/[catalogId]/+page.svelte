@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { CatalogItemDetail } from '$modules/catalog';
+	import { CatalogItemDetail } from '@/modules/catalog';
 
-	import type { CatalogItemT } from '$modules/catalog';
+	import type { CatalogItemT } from '@/modules/catalog';
 
-	export let data;
+	let { data } = $props();
 
-	$: itemIndex = data?.catalog?.findIndex((item) => item.id === data.catalogId);
-	$: item = data?.catalog?.[itemIndex] as CatalogItemT;
+	const itemIndex = $derived(data?.catalog?.findIndex((item) => item.id === data.catalogId));
+	const item = $derived(data?.catalog?.[itemIndex] as CatalogItemT);
 </script>
 
 <section class:project-page={true}>

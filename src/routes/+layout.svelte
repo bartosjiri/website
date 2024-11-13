@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { UmamiAnalytics } from '$util/umami-analytics';
-	import { PageMeta } from '$util/meta';
+	import { UmamiAnalytics } from '@/util/umami-analytics';
+	import { PageMeta } from '@/util/meta';
 
-	import { Header } from '$modules/header';
-	import { CatalogList } from '$modules/catalog';
+	import { Header } from '@/modules/header';
+	import { CatalogList } from '@/modules/catalog';
 
-	import '../styles/_global.scss';
+	import '@/styles/_global.scss';
 
-	export let data;
+	let { data, children } = $props();
 </script>
 
 <UmamiAnalytics />
@@ -15,7 +15,7 @@
 
 <Header />
 <main>
-	<slot />
+	{@render children()}
 	<CatalogList items={data?.catalog} />
 </main>
 
