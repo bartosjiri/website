@@ -96,7 +96,10 @@
 		<span>{$selectedMediaIndex + 1}/{item.media?.length}</span>
 	</div>
 	<div class:description={true}>
-		<p>{item.description}</p>
+		{@html item.description
+			?.split(/<br\s*\/?>/)
+			.map((p) => `<p>${p}</p>`)
+			.join('')}
 	</div>
 	{#if item.links?.length}
 		<div class:links={true}>
@@ -208,8 +211,15 @@
 
 		.description {
 			grid-area: description;
-
 			max-width: 48rem;
+
+			:global(p) {
+				margin-bottom: 0.8em;
+
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
 		}
 
 		.links {
