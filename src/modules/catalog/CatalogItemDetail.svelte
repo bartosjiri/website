@@ -92,8 +92,14 @@
 	<div class:type={true}>
 		<span>{item.type}</span>
 	</div>
+	<div class:gallery-controls={true} class:-prev={true}>
+		<button onclick={() => handleGalleryNavigation(-1)}>Prev</button>
+	</div>
 	<div class:gallery-indicator={true}>
 		<span>{$selectedMediaIndex + 1}/{item.media?.length}</span>
+	</div>
+	<div class:gallery-controls={true} class:-next={true}>
+		<button onclick={() => handleGalleryNavigation(1)}>Next</button>
 	</div>
 	<div class:description={true}>
 		{@html item.description
@@ -113,16 +119,17 @@
 <style lang="scss">
 	.catalog-item-detail {
 		--media-height: 640px;
+		--grid-gap: 2rem;
 
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		grid-template-rows: repeat(auto-fill, auto);
 		grid-template-areas: 'gallery gallery gallery' 'name type gallery-indicator' 'description description description' 'links links links';
-		gap: 2rem;
+		gap: var(--grid-gap);
 		max-width: var(--media-height);
 
 		@include breakpoint($breakpoint-tablet) {
-			grid-template-areas: 'gallery gallery gallery' 'name name gallery-indicator' 'type type type' 'description description description' 'links links links';
+			grid-template-areas: 'gallery gallery gallery' 'gallery-controls-prev gallery-indicator gallery-controls-next' 'name name name' 'type type type' 'description description description' 'links links links';
 		}
 
 		.gallery {
@@ -180,6 +187,7 @@
 
 			.image {
 				display: flex;
+				height: 100%;
 				max-width: var(--media-height);
 				max-height: var(--media-height);
 				aspect-ratio: 1 / 1;
@@ -198,6 +206,10 @@
 			h2 {
 				text-align: left;
 			}
+
+			@include breakpoint($breakpoint-tablet) {
+				margin-top: var(--grid-gap);
+			}
 		}
 
 		.type {
@@ -207,6 +219,30 @@
 		.gallery-indicator {
 			grid-area: gallery-indicator;
 			text-align: right;
+
+			@include breakpoint($breakpoint-tablet) {
+				text-align: center;
+			}
+		}
+
+		.gallery-controls {
+			display: none;
+
+			@include breakpoint($breakpoint-tablet) {
+				&.-prev,
+				&.-next {
+					display: flex;
+				}
+
+				&.-prev {
+					grid-area: gallery-controls-prev;
+				}
+
+				&.-next {
+					grid-area: gallery-controls-next;
+					justify-content: flex-end;
+				}
+			}
 		}
 
 		.description {

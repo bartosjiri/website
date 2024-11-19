@@ -20,12 +20,18 @@ body {
 	text-rendering: optimizeLegibility;
 	-webkit-tap-highlight-color: transparent;
 
-	a {
+	a,
+	button {
 		color: var(--color-foreground-01);
 		text-decoration: none;
+		cursor: pointer;
 
 		&:hover {
 			animation: var(--animation-01);
+
+			@media (hover: none) {
+				animation: none;
+			}
 		}
 	}
 

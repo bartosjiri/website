@@ -1,9 +1,9 @@
 :root {
 	--typography-size-01: 1.2rem;
 
-	--typography-weight-01: 150;
+	--typography-weight-01: 135;
 
-	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	@media (min-device-pixel-ratio: 1.1) or (-webkit-min-device-pixel-ratio: 1.1) {
 		--typography-weight-01: 115;
 	}
 }
