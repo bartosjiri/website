@@ -1,6 +1,9 @@
 <div class:about={true}>
 	<div class:bio={true}>
-		<p>@TODO: About</p>
+		<p>
+			bartosjiri is a&nbsp;software engineer specializing in&nbsp;creative and&nbsp;user-centered
+			digital experiences, thriving in&nbsp;0→1&nbsp;work.
+		</p>
 	</div>
 	<div class:links={true}>
 		<a href="https://x.com/bartosjiri_" target="_blank">X/Twitter</a>

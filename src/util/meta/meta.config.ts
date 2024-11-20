@@ -1,8 +1,14 @@
 export const META_DOMAIN = 'https://bartosjiri.com';
 
 export const META_TITLE = `bartosjiri`;
-export const META_DESCRIPTION = '@TODO';
-export const META_KEYWORDS = ['bartosjiri', 'Jiří Bartoš', '@TODO'];
+export const META_DESCRIPTION =
+	'bartosjiri is a software engineer specializing in creative and user-centered digital experiences, thriving in 0→1 work.';
+export const META_KEYWORDS = [
+	'bartosjiri',
+	'Jiří Bartoš',
+	'software engineer',
+	'creative technologist'
+];
 
 export const META_AUTHOR = 'bartosjiri';
 
