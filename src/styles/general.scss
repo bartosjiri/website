@@ -2,15 +2,17 @@
 	font-size: 62.5%;
 }
 
-html {
+html,
+body {
 	height: 100%;
 }
 
 body {
 	font-family: var(--font-family-01);
-	font-size: var(--font-size-01);
+	font-size: var(--typography-size-01);
 	font-weight: var(--typography-weight-01);
-	line-height: 1.5;
+	text-transform: uppercase;
+	text-decoration-skip-ink: none;
 	color: var(--color-foreground-01);
 	background-color: var(--color-background-01);
 	-webkit-font-smoothing: antialiased;
@@ -18,13 +20,27 @@ body {
 	text-rendering: optimizeLegibility;
 	-webkit-tap-highlight-color: transparent;
 
-	a {
-		outline: 0;
+	a,
+	button {
+		color: var(--color-foreground-01);
 		text-decoration: none;
+		cursor: pointer;
+
+		&:hover {
+			animation: var(--animation-01);
+
+			@media (hover: none) {
+				animation: none;
+			}
+		}
+	}
+
+	button {
+		text-transform: uppercase;
 	}
 
 	::selection {
-		color: var(--color-foreground-01);
-		background-color: var(--color-gray-04);
+		color: var(--color-background-01);
+		background: var(--color-foreground-01);
 	}
 }

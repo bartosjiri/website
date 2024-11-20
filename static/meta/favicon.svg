@@ -1,8 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="128" height="128"><svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="128" height="128"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="128" height="128"><svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 28L22.5242 99.3443H44.7049L22.1807 28H0Z" fill="#FF0033"></path>
 <path d="M27.7647 28L38.1492 60.8932H60.3299L49.9454 28H27.7647Z" fill="#FF0033"></path>
 <path d="M72.4696 99.3443L61.9975 66.1763H39.8168L50.2889 99.3443H72.4696Z" fill="#FF0033"></path>
 <path d="M78.0556 99.3443H100.236L89.7642 66.1724H67.5835L78.0556 99.3443Z" fill="#FF0033"></path>
 <path d="M105.819 99.3443L83.2951 28H105.476L128 99.3443H105.819Z" fill="#FF0033"></path>
 </svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+</style></svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
 </style></svg>

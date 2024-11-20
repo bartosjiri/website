@@ -1,24 +1,51 @@
-<script>
-	import { UmamiAnalytics } from '$util/umami-analytics';
-	import { Tooltip } from '$lib/primitives';
+<script lang="ts">
+	import { UmamiAnalytics } from '@/util/umami-analytics';
+	import { PageMeta } from '@/util/meta';
 
-	import '../styles/_global.scss';
+	import { Header } from '@/modules/header';
+	import { CatalogList } from '@/modules/catalog';
+
+	import '@/styles/_global.scss';
+
+	let { data, children } = $props();
 </script>
 
 <UmamiAnalytics />
+<PageMeta />
+
+<Header />
 <main>
-	<slot />
+	{@render children()}
+	<CatalogList items={data?.catalog} />
 </main>
-<Tooltip />
 
 <style lang="scss">
-	main {
-		width: 90%;
-		max-width: 96rem;
+	:global(body) {
 		display: flex;
 		flex-direction: column;
-		margin: 0 auto;
-		@include fluid(padding-top, 150, 250);
-		@include fluid(padding-bottom, 150, 250);
+		max-height: 100vh;
+		overflow: hidden;
+
+		@include breakpoint($breakpoint-tablet) {
+			height: auto;
+			max-height: none;
+			overflow: auto;
+		}
+
+		main {
+			height: 100%;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			column-gap: 2rem;
+			padding: 2rem;
+			overflow: hidden;
+
+			@include breakpoint($breakpoint-tablet) {
+				grid-template-columns: 1fr;
+				grid-template-rows: auto 1fr;
+				row-gap: 2rem;
+				overflow: auto;
+			}
+		}
 	}
 </style>

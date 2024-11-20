@@ -1,1 +1,0 @@
-export { removeUrlProtocol } from './removeUrlProtocol';

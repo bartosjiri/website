@@ -1,0 +1,18 @@
+:root {
+	--animation-duration-01: 0.25s;
+	--aniamtion-function-01: step-end;
+	--animation-iteration-01: infinite;
+	--animation-01: blink var(--animation-duration-01) var(--aniamtion-function-01)
+		var(--animation-iteration-01);
+
+	@keyframes blink {
+		0%,
+		100% {
+			opacity: 1;
+		}
+
+		50% {
+			opacity: 0;
+		}
+	}
+}
