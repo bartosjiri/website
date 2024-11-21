@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto, afterNavigate, beforeNavigate } from '$app/navigation';
+	import { goto, afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	import { centerMediaContainer } from './catalog.helpers';
@@ -8,7 +8,7 @@
 
 	import { CATALOG_MEDIA_CONFIG } from './catalog.config';
 
-	import type { AfterNavigate, BeforeNavigate } from '@sveltejs/kit';
+	import type { AfterNavigate } from '@sveltejs/kit';
 	import type { CatalogListT, CatalogItemT } from './catalog.types';
 
 	let {
@@ -18,6 +18,8 @@
 	}: { catalog: CatalogListT; item: CatalogItemT; itemIndex: number } = $props();
 
 	const MEDIA_HEIGHT = (CATALOG_MEDIA_CONFIG.h as number[])[1];
+
+	let initialImageLoaded = $state(false);
 
 	const handleCatalogItemNavigation = async (directionModifier: -1 | 1) => {
 		const targetItem = catalog[(itemIndex + directionModifier + catalog.length) % catalog.length];
@@ -82,8 +84,23 @@
 					srcSet={item.media?.[$selectedMediaIndex]?.[MEDIA_HEIGHT]?.webp}
 					type="image/webp"
 				/>
-				<img src={item.media?.[$selectedMediaIndex]?.[MEDIA_HEIGHT]?.png} alt="" />
+				<img
+					onload={() => (initialImageLoaded = true)}
+					src={item.media?.[$selectedMediaIndex]?.[MEDIA_HEIGHT]?.png}
+					alt=""
+				/>
 			</picture>
+			{#if item.media?.length && initialImageLoaded}
+				<div class:image-preloader={true}>
+					{#each item.media as itemMedia}
+						<picture>
+							<source srcSet={itemMedia?.[MEDIA_HEIGHT]?.avif} type="image/avif" />
+							<source srcSet={itemMedia?.[MEDIA_HEIGHT]?.webp} type="image/webp" />
+							<img src={itemMedia?.[MEDIA_HEIGHT]?.png} alt="" />
+						</picture>
+					{/each}
+				</div>
+			{/if}
 		</div>
 	{/if}
 	<div class:name={true}>
@@ -197,6 +214,15 @@
 					width: 100%;
 					object-fit: contain;
 				}
+			}
+
+			.image-preloader {
+				position: fixed;
+				top: -9999px;
+				left: -9999px;
+				height: 0;
+				width: 0;
+				visibility: hidden;
 			}
 		}
 
