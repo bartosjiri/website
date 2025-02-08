@@ -5,8 +5,7 @@ export const superchainChiblings: CatalogItemConfigT = {
 	type: 'NFT collection',
 	category: 'project',
 	timeframe: {
-		start: 202407,
-		end: null
+		start: 202407
 	},
 	description:
 		'A&nbsp;custom NFT minting experience for the&nbsp;Superchain Chiblings collection by <a href="https://twitter.com/ttyl5h" target="_blank">Secretpikachu</a>. The&nbsp;collection minted 20,000 tokens in less than an&nbsp;hour.<br/>It&nbsp;was later open-sourced and&nbsp;featured as a&nbsp;case study in&nbsp;Highlight\'s official documentation.',
