@@ -11,7 +11,7 @@ export const weBuyTheArt: CatalogItemConfigT = {
 		'An&nbsp;interactive onboarding website for the&nbsp;We Buy The&nbsp;Art community, featuring Zora and&nbsp;Party integrations.',
 	links: [
 		{
-			url: 'https://webuythe.art',
+			url: 'https://webuytheart.pages.dev/',
 			label: 'webuythe.art'
 		}
 	]
