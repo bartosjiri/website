@@ -1,23 +1,22 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { afterNavigate } from '$app/navigation';
 
-	import { mediaContainerRef, selectedMediaIndex } from './catalog.store';
+	import { mediaContainerRef, catalogItemMediaIndex } from './catalog.store';
 
 	import { CATALOG_MEDIA_CONFIG } from './catalog.config';
 
 	import type { CatalogItemT } from './catalog.types';
 
-	let {
-		item
-	}: {
+	type CatalogItemPropsT = {
 		item: CatalogItemT;
-	} = $props();
+	};
+
+	let { item }: CatalogItemPropsT = $props();
 
 	const MEDIA_HEIGHT = (CATALOG_MEDIA_CONFIG.h as number[])[0];
 
 	const handleMediaClick = (index: number) => {
-		selectedMediaIndex.set(index);
+		catalogItemMediaIndex.set(index);
 	};
 
 	const isCurrentItem = $derived($page.params.catalogId === item.id);
@@ -50,7 +49,7 @@
 			{#each item.media as media, index}
 				<button
 					onclick={() => handleMediaClick(index)}
-					class:-highlighted={$selectedMediaIndex === index}
+					class:-highlighted={$catalogItemMediaIndex === index}
 				>
 					<picture class:image={true}>
 						<source srcSet={media[MEDIA_HEIGHT].avif} type="image/avif" />

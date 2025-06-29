@@ -16,7 +16,7 @@
 <Header />
 <main>
 	{@render children()}
-	<CatalogList items={data?.catalog} />
+	<CatalogList catalog={data?.catalog} />
 </main>
 
 <style lang="scss">

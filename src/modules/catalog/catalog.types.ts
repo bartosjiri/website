@@ -27,3 +27,15 @@ export type CatalogItemMediaT = {
 	original?: { [key: string]: string };
 	[key: number]: { [key: string]: string };
 };
+
+export type MediaImportT = [string, MediaModuleT][];
+
+export type MediaModuleT = {
+	default: MediaFileT[];
+};
+
+export type MediaFileT = {
+	height: number;
+	format: string;
+	src: string;
+};

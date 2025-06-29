@@ -4,4 +4,6 @@ export { default as CatalogItemDetail } from './CatalogItemDetail.svelte';
 
 export * from './catalog.helpers';
 
+export * from './catalog.store';
+
 export * from './catalog.types';

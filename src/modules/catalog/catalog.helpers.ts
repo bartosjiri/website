@@ -1,10 +1,21 @@
 import { get } from 'svelte/store';
+import { goto } from '$app/navigation';
 
-import { mediaContainerRef } from './catalog.store';
+import {
+	catalog as catalogStore,
+	catalogItemIndex as catalogItemIndexStore,
+	catalogItemMediaIndex as catalogItemMediaIndexStore,
+	mediaContainerRef as mediaContainerRefStore
+} from './catalog.store';
 
 import { CATALOG_MEDIA_CONFIG } from './catalog.config';
 
-import type { CatalogListT, CatalogItemConfigT, CatalogItemMediaT } from './catalog.types.ts';
+import type {
+	CatalogListT,
+	CatalogItemConfigT,
+	CatalogItemMediaT,
+	MediaImportT
+} from './catalog.types.ts';
 
 export const loadCatalogData = async () => {
 	const configs = import.meta.glob('/content/catalog/**/*.ts');
@@ -67,13 +78,13 @@ const getClosestHeight = (actualHeight: number, targetHeights: number[]): number
 };
 
 export const centerMediaContainer = (itemIndex: number) => {
-	const containerRef = get(mediaContainerRef);
-	if (!containerRef) return;
+	const mediaContainerRef = get(mediaContainerRefStore);
+	if (!mediaContainerRef) return;
 
-	const { clientWidth, scrollWidth } = containerRef;
+	const { clientWidth, scrollWidth } = mediaContainerRef;
 	if (scrollWidth <= clientWidth) return;
 
-	const children = containerRef.children;
+	const children = mediaContainerRef.children;
 	let offsetLeft = 0;
 
 	for (let i = 0; i < itemIndex; i++) {
@@ -81,17 +92,81 @@ export const centerMediaContainer = (itemIndex: number) => {
 	}
 	offsetLeft += children[itemIndex].scrollWidth / 2;
 
-	containerRef.scrollLeft = offsetLeft - clientWidth / 2;
+	mediaContainerRef.scrollLeft = offsetLeft - clientWidth / 2;
 };
 
-type MediaImportT = [string, MediaModuleT][];
+export const handleCatalogItemNavigation = async (
+	directionModifier: -1 | 1,
+	resetMediaIndex = false
+) => {
+	const catalog = get(catalogStore);
+	let catalogItemIndex = get(catalogItemIndexStore);
 
-type MediaModuleT = {
-	default: MediaFileT[];
+	if (catalogItemIndex === null) {
+		catalogItemIndex = directionModifier === -1 ? catalog.length : -1;
+	}
+
+	const targetItem =
+		catalog[(catalogItemIndex + directionModifier + catalog.length) % catalog.length];
+	const targetItemMediaCount = targetItem?.media?.length ?? 0;
+
+	await goto(targetItem.id);
+
+	if (resetMediaIndex) {
+		catalogItemMediaIndexStore.set(0);
+	} else {
+		catalogItemMediaIndexStore.set(
+			directionModifier === 1 ? 0 : Math.max(targetItemMediaCount - 1, 0)
+		);
+	}
 };
 
-type MediaFileT = {
-	height: number;
-	format: string;
-	src: string;
+export const handleCatalogItemMediaNavigation = (directionModifier: -1 | 1) => {
+	const catalog = get(catalogStore);
+	const catalogItemIndex = get(catalogItemIndexStore) || 0;
+
+	const item = catalog[catalogItemIndex];
+	if (!item.media?.length) return;
+
+	const catalogItemMediaIndex = get(catalogItemMediaIndexStore);
+
+	if (
+		(directionModifier === 1 && catalogItemMediaIndex === item.media.length - 1) ||
+		(directionModifier === -1 && catalogItemMediaIndex === 0)
+	) {
+		handleCatalogItemNavigation(directionModifier);
+		return;
+	}
+
+	const targetIdex =
+		(catalogItemMediaIndex + directionModifier + item.media.length) % item.media.length;
+
+	catalogItemMediaIndexStore.set(targetIdex);
+	centerMediaContainer(targetIdex);
+};
+
+export const handleCatalogKeyboardNavigation = (e: KeyboardEvent) => {
+	const catalogItemIndex = get(catalogItemIndexStore);
+	const isBrowsingCatalog = catalogItemIndex !== null;
+
+	switch (e.key) {
+		case 'ArrowUp':
+		case 'w':
+			handleCatalogItemNavigation(-1, true);
+			break;
+		case 'ArrowDown':
+		case 's':
+			handleCatalogItemNavigation(1, true);
+			break;
+		case 'ArrowLeft':
+		case 'a':
+			if (isBrowsingCatalog) handleCatalogItemMediaNavigation(-1);
+			break;
+		case 'ArrowRight':
+		case 'd':
+			if (isBrowsingCatalog) handleCatalogItemMediaNavigation(1);
+			break;
+		default:
+			return;
+	}
 };

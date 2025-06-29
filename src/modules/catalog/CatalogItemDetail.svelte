@@ -1,63 +1,27 @@
 <script lang="ts">
-	import { goto, afterNavigate } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { handleCatalogItemMediaNavigation } from './catalog.helpers';
 
-	import { centerMediaContainer } from './catalog.helpers';
-
-	import { selectedMediaIndex } from './catalog.store';
+	import { catalogItemIndex, catalogItemMediaIndex } from './catalog.store';
 
 	import { CATALOG_MEDIA_CONFIG } from './catalog.config';
 
-	import type { AfterNavigate } from '@sveltejs/kit';
 	import type { CatalogListT, CatalogItemT } from './catalog.types';
 
-	let {
-		catalog,
-		item,
-		itemIndex
-	}: { catalog: CatalogListT; item: CatalogItemT; itemIndex: number } = $props();
+	type CatalogItemDetailPropsT = {
+		catalog: CatalogListT;
+		item: CatalogItemT;
+		itemIndex: number;
+	};
+
+	let { item, itemIndex }: CatalogItemDetailPropsT = $props();
 
 	const MEDIA_HEIGHT = (CATALOG_MEDIA_CONFIG.h as number[])[1];
 
 	let initialImageLoaded = $state(false);
 
-	const handleCatalogItemNavigation = async (directionModifier: -1 | 1) => {
-		const targetItem = catalog[(itemIndex + directionModifier + catalog.length) % catalog.length];
-		const targetItemMediaCount = targetItem?.media?.length ?? 0;
-
-		await goto(targetItem.id);
-		selectedMediaIndex.set(directionModifier === 1 ? 0 : Math.max(targetItemMediaCount - 1, 0));
-	};
-
-	const handleGalleryNavigation = (directionModifier: -1 | 1) => {
-		if (!item.media?.length) return;
-
-		if (
-			(directionModifier === 1 && $selectedMediaIndex === item.media.length - 1) ||
-			(directionModifier === -1 && $selectedMediaIndex === 0)
-		) {
-			handleCatalogItemNavigation(directionModifier);
-			return;
-		}
-
-		const targetIdex =
-			($selectedMediaIndex + directionModifier + item.media.length) % item.media.length;
-
-		selectedMediaIndex.set(targetIdex);
-		centerMediaContainer(targetIdex);
-	};
-
-	const handleBrowserNavigation = (e: AfterNavigate) => {
-		const targetItem = catalog.find((item) => item.id === $page.params.catalogId);
-		if (!targetItem?.media) return;
-
-		if (['popstate', 'link'].includes(e?.type)) {
-			selectedMediaIndex.set(0);
-			return;
-		}
-	};
-
-	afterNavigate(handleBrowserNavigation);
+	$effect(() => {
+		catalogItemIndex.set(itemIndex);
+	});
 </script>
 
 <div class:catalog-item-detail={true}>
@@ -66,27 +30,27 @@
 			<button
 				class:controls={true}
 				class:-prev={true}
-				onclick={() => handleGalleryNavigation(-1)}
+				onclick={() => handleCatalogItemMediaNavigation(-1)}
 				aria-label="Previous"
 			></button>
 			<button
 				class:controls={true}
 				class:-next={true}
-				onclick={() => handleGalleryNavigation(1)}
+				onclick={() => handleCatalogItemMediaNavigation(1)}
 				aria-label="Next"
 			></button>
 			<picture class:image={true}>
 				<source
-					srcSet={item.media?.[$selectedMediaIndex]?.[MEDIA_HEIGHT]?.avif}
+					srcSet={item.media?.[$catalogItemMediaIndex]?.[MEDIA_HEIGHT]?.avif}
 					type="image/avif"
 				/>
 				<source
-					srcSet={item.media?.[$selectedMediaIndex]?.[MEDIA_HEIGHT]?.webp}
+					srcSet={item.media?.[$catalogItemMediaIndex]?.[MEDIA_HEIGHT]?.webp}
 					type="image/webp"
 				/>
 				<img
 					onload={() => (initialImageLoaded = true)}
-					src={item.media?.[$selectedMediaIndex]?.[MEDIA_HEIGHT]?.png}
+					src={item.media?.[$catalogItemMediaIndex]?.[MEDIA_HEIGHT]?.png}
 					alt=""
 				/>
 			</picture>
@@ -110,15 +74,16 @@
 		<span>{item.type}</span>
 	</div>
 	<div class:gallery-controls={true} class:-prev={true}>
-		<button onclick={() => handleGalleryNavigation(-1)}>Prev</button>
+		<button onclick={() => handleCatalogItemMediaNavigation(-1)}>Prev</button>
 	</div>
 	<div class:gallery-indicator={true}>
-		<span>{$selectedMediaIndex + 1}/{item.media?.length}</span>
+		<span>{$catalogItemMediaIndex + 1}/{item.media?.length}</span>
 	</div>
 	<div class:gallery-controls={true} class:-next={true}>
-		<button onclick={() => handleGalleryNavigation(1)}>Next</button>
+		<button onclick={() => handleCatalogItemMediaNavigation(1)}>Next</button>
 	</div>
 	<div class:description={true}>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags-->
 		{@html item.description
 			?.split(/<br\s*\/?>/)
 			.map((p) => `<p>${p}</p>`)
