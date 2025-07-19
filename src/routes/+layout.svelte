@@ -3,11 +3,10 @@
 	import { PageMeta } from '@/util/meta';
 
 	import { Header } from '@/modules/header';
-	import { CatalogList } from '@/modules/catalog';
 
 	import '@/styles/_global.scss';
 
-	let { data, children } = $props();
+	let { children } = $props();
 </script>
 
 <UmamiAnalytics />
@@ -16,7 +15,6 @@
 <Header />
 <main>
 	{@render children()}
-	<CatalogList catalog={data?.catalog} />
 </main>
 
 <style lang="scss">
