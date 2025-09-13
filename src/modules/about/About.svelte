@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { ABOUT_LINKS } from './about.constants';
+</script>
+
 <div class:about={true}>
 	<div class:bio={true}>
 		<p>
@@ -11,9 +15,9 @@
 		</a>
 	</div> -->
 	<div class:links={true}>
-		<a href="https://x.com/bartosjiri_" target="_blank">X/Twitter</a>
-		<a href="https://github.com/bartosjiri" target="_blank">Github</a>
-		<a href="mailto:hi@bartosjiri.com" target="_blank">hi@bartosjiri.com</a>
+		<a href={ABOUT_LINKS.TWITTER} target="_blank">X/Twitter</a>
+		<a href={ABOUT_LINKS.GITHUB} target="_blank">Github</a>
+		<a href={ABOUT_LINKS.EMAIL} target="_blank">hi@bartosjiri.com</a>
 	</div>
 </div>
 
