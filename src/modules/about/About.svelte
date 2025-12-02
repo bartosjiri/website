@@ -5,8 +5,8 @@
 <div class:about={true}>
 	<div class:bio={true}>
 		<p>
-			bartosjiri is a&nbsp;software engineer specializing in&nbsp;creative and&nbsp;user-centered
-			digital experiences, thriving in&nbsp;0→1&nbsp;work.
+			bartosjiri is a&nbsp;software engineer specializing in&nbsp;user&#8209;centered
+			and&nbsp;creative digital experiences, thriving in&nbsp;0→1&nbsp;work.
 		</p>
 	</div>
 	<!-- <div class:availability={true}>
