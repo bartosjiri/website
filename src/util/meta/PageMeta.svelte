@@ -44,8 +44,13 @@
 		href="/meta/favicon-96x96.png?v=${META.META_VERSION}"
 		sizes="96x96"
 	/>
-	<link rel="icon" type="image/svg+xml" href="/meta/favicon.svg?v=${META.META_VERSION}" />
-	<link rel="shortcut icon" href="/meta/favicon.ico?v=${META.META_VERSION}" />
+	<link
+		rel="icon"
+		type="image/svg+xml"
+		href="/meta/favicon.svg?v=${META.META_VERSION}"
+		sizes="any"
+	/>
+	<link rel="shortcut icon" href="/meta/favicon.ico?v=${META.META_VERSION}" sizes="48x48" />
 	<link
 		rel="apple-touch-icon"
 		sizes="180x180"
