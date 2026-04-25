@@ -1,16 +1,37 @@
+import { decode } from 'html-entities';
+
+import { ABOUT_BIO } from '@/modules/about';
+
 export const META_DOMAIN = 'https://bartosjiri.com';
 
 export const META_TITLE = `bartosjiri`;
-export const META_DESCRIPTION =
-	'bartosjiri is a software engineer specializing in creative and user-centered digital experiences, thriving in 0→1 work.';
+export const META_DESCRIPTION = decode(ABOUT_BIO);
 export const META_KEYWORDS = [
 	'bartosjiri',
+	'Jiri Bartos',
 	'Jiří Bartoš',
 	'software engineer',
+	'svelte developer',
+	'sveltekit developer',
 	'creative technologist'
 ];
 
-export const META_AUTHOR = 'bartosjiri';
+export const META_AUTHOR = 'Jiri Bartos';
+export const META_AUTHOR_NATIVE = 'Jiří Bartoš';
+export const META_ALIAS = 'bartosjiri';
+
+export const META_JOB_TITLE = 'Software Engineer';
+export const META_JOB_SKILLS = [
+	'Svelte',
+	'SvelteKit',
+	'JavaScript',
+	'TypeScript',
+	'React',
+	'Full-stack web development'
+];
+
+export const META_LOCATION = 'Prague';
+export const META_COUNTRY = 'CZ';
 
 export const META_COLOR_THEME = '#020303';
 export const META_COLOR_APPLE = '#ff0033';
