@@ -48,23 +48,23 @@
 	<link rel="me" href={ABOUT_LINKS.GITHUB} />
 	<link rel="me" href={ABOUT_LINKS.TWITTER} />
 
-	<script type="application/ld+json">
+	{@html `<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
 			"@type": "Person",
-			"name": META.META_AUTHOR,
-			"alternateName": [META.META_AUTHOR_NATIVE, META.META_ALIAS],
-			"url": META.META_DOMAIN,
-			"sameAs": [ABOUT_LINKS.GITHUB, ABOUT_LINKS.TWITTER],
-			"jobTitle": META.META_JOB_TITLE,
-			"knowsAbout": META.META_JOB_SKILLS,
+			"name": "${META.META_AUTHOR}",
+			"alternateName": ["${META.META_AUTHOR_NATIVE}", "${META.META_ALIAS}"],
+			"url": "${META.META_DOMAIN}",
+			"sameAs": ["${ABOUT_LINKS.GITHUB}", "${ABOUT_LINKS.TWITTER}"],
+			"jobTitle": "${META.META_JOB_TITLE}",
+			"knowsAbout": [${META.META_JOB_SKILLS.map((s) => `"${s}"`)}],
 			"address": {
 				"@type": "PostalAddress",
-				"addressLocality": META.META_LOCATION,
-				"addressCountry": META.META_COUNTRY
+				"addressLocality": "${META.META_LOCATION}",
+				"addressCountry": "${META.META_COUNTRY}"
 			}
 		}
-	</script>
+	</script>`}
 
 	<link
 		rel="icon"
