@@ -38,6 +38,8 @@
 	{/if}
 
 	<link rel="llms" type="text/plain" href="/llms.txt" />
+	<link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs Context File" />
+	<meta name="llms-file" content={`${META.META_DOMAIN}/llms.txt`} />
 
 	<title>{pageTitle}</title>
 	<meta name="description" content={description} />
