@@ -38,33 +38,35 @@
 	{/if}
 
 	<link rel="llms" type="text/plain" href="/llms.txt" />
+	<link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs Context File" />
+	<meta name="llms-file" content={`${META.META_DOMAIN}/llms.txt`} />
 
 	<title>{pageTitle}</title>
 	<meta name="description" content={description} />
 	<meta name="keywords" content={keywords.join(', ')} />
 	<meta name="author" content={META.META_ALIAS} />
-	<meta name="person" content={META.META_AUTHOR} />
 
 	<link rel="me" href={ABOUT_LINKS.GITHUB} />
 	<link rel="me" href={ABOUT_LINKS.TWITTER} />
 
-	<script type="application/ld+json">
+	{@html `<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
 			"@type": "Person",
-			"name": META.META_AUTHOR,
-			"alternateName": [META.META_AUTHOR_NATIVE, META.META_ALIAS],
-			"url": META.META_DOMAIN,
-			"sameAs": [ABOUT_LINKS.GITHUB, ABOUT_LINKS.TWITTER],
-			"jobTitle": META.META_JOB_TITLE,
-			"knowsAbout": META.META_JOB_SKILLS,
+			"name": "${META.META_AUTHOR}",
+			"alternateName": ["${META.META_AUTHOR_NATIVE}", "${META.META_ALIAS}"],
+			"url": "${META.META_DOMAIN}",
+			"sameAs": ["${ABOUT_LINKS.GITHUB}", "${ABOUT_LINKS.TWITTER}"],
+			"description": "${META.META_DESCRIPTION}",
+			"jobTitle": "${META.META_JOB_TITLE}",
+			"knowsAbout": [${META.META_JOB_SKILLS.map((s) => `"${s}"`)}],
 			"address": {
 				"@type": "PostalAddress",
-				"addressLocality": META.META_LOCATION,
-				"addressCountry": META.META_COUNTRY
+				"addressLocality": "${META.META_LOCATION}",
+				"addressCountry": "${META.META_COUNTRY}"
 			}
 		}
-	</script>
+	</script>`}
 
 	<link
 		rel="icon"
