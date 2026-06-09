@@ -10,10 +10,10 @@ export const META_KEYWORDS = [
 	'bartosjiri',
 	'Jiri Bartos',
 	'Jiří Bartoš',
-	'software engineer',
-	'svelte developer',
-	'sveltekit developer',
-	'creative technologist'
+	'Software Engineer',
+	'Svelte Developer',
+	'SvelteKit Developer',
+	'Creative Technologist'
 ];
 
 export const META_AUTHOR = 'Jiri Bartos';
@@ -27,7 +27,12 @@ export const META_JOB_SKILLS = [
 	'JavaScript',
 	'TypeScript',
 	'React',
-	'Full-stack web development'
+	'Full-stack Web Development',
+	'Frontend Development',
+	'Design Systems',
+	'UI Engineering',
+	'Node.js',
+	'Web Performance'
 ];
 
 export const META_LOCATION = 'Prague';

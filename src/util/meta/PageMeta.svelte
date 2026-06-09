@@ -45,7 +45,6 @@
 	<meta name="description" content={description} />
 	<meta name="keywords" content={keywords.join(', ')} />
 	<meta name="author" content={META.META_ALIAS} />
-	<meta name="person" content={META.META_AUTHOR} />
 
 	<link rel="me" href={ABOUT_LINKS.GITHUB} />
 	<link rel="me" href={ABOUT_LINKS.TWITTER} />
@@ -58,6 +57,7 @@
 			"alternateName": ["${META.META_AUTHOR_NATIVE}", "${META.META_ALIAS}"],
 			"url": "${META.META_DOMAIN}",
 			"sameAs": ["${ABOUT_LINKS.GITHUB}", "${ABOUT_LINKS.TWITTER}"],
+			"description": "${META.META_DESCRIPTION}",
 			"jobTitle": "${META.META_JOB_TITLE}",
 			"knowsAbout": [${META.META_JOB_SKILLS.map((s) => `"${s}"`)}],
 			"address": {
