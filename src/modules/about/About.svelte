@@ -17,7 +17,7 @@
 	<div class:links={true}>
 		<a href={ABOUT_LINKS.TWITTER} target="_blank">X/Twitter</a>
 		<a href={ABOUT_LINKS.GITHUB} target="_blank">Github</a>
-		<a href={ABOUT_LINKS.EMAIL} target="_blank">hi@bartosjiri.com</a>
+		<a href={`mailto:${ABOUT_LINKS.EMAIL}`} target="_blank">hi@bartosjiri.com</a>
 	</div>
 </div>
 
