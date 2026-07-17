@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-LLMs: https://bartosjiri.com/llms.txt
