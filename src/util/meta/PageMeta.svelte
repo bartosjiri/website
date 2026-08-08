@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { version } from '$app/environment';
+
 	import * as META from './meta.config';
 	import { ABOUT_LINKS } from '@/modules/about';
 
@@ -96,7 +98,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content={META.META_TITLE} />
 	<meta property="og:title" content={pageTitle} />
-	<meta property="og:image" content={`${ogImageUrl}?v=${META.META_VERSION}`} />
+	<meta property="og:image" content={`${ogImageUrl}?v=${version}`} />
 	<meta property="og:image:width" content={String(ogImageWidth)} />
 	<meta property="og:image:height" content={String(ogImageHeight)} />
 	<meta property="og:image:alt" content={pageTitle} />
@@ -106,6 +108,6 @@
 	<meta name="twitter:creator" content={META.META_ALIAS} />
 	<meta name="twitter:title" content={pageTitle} />
 	<meta name="twitter:description" content={description} />
-	<meta name="twitter:image" content={`${ogImageUrl}?v=${META.META_VERSION}`} />
+	<meta name="twitter:image" content={`${ogImageUrl}?v=${version}`} />
 	<meta name="twitter:image:alt" content={pageTitle} />
 </svelte:head>
